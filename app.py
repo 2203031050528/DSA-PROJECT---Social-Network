@@ -38,18 +38,17 @@ class SocialNetwork:
         direct_friends = self.network[user]
         suggestions = set()
 
-        # For each direct friend
+       
         for friend in direct_friends:
             # Get their friends (friends of friends)
             friends_of_friends = self.network[friend]
             # Add them to suggestions
             suggestions.update(friends_of_friends)
 
-        # Remove the user themselves and their direct friends from suggestions
+      
         suggestions.discard(user)
         suggestions -= direct_friends
 
-        # Return the list of suggestions with additional information
         if suggestions:
             result = {
                 "user": user,
